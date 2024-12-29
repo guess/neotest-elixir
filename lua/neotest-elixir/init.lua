@@ -271,7 +271,8 @@ function ElixirNeotestAdapter.build_spec(args)
         local results = {}
         for _, line in ipairs(lines) do
           local decoded_result = vim.json.decode(line, { luanil = { object = true } })
-          print(decoded_result)
+          logger.debug('Decoded result:', vim.inspect(decoded_result))
+          print('Decoded result:', vim.inspect(decoded_result))
           local earlier_result = results[decoded_result.id]
           if earlier_result == nil or earlier_result.status ~= "failed" then
             results[decoded_result.id] = {
