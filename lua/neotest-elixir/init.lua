@@ -253,6 +253,8 @@ function ElixirNeotestAdapter.build_spec(args)
     post_processing_command = post_process_command(command)
   end
 
+  print(post_processing_command)
+
   local stream_data, stop_stream = lib.files.stream_lines(results_path)
   local write_delay = tostring(get_write_delay())
 
@@ -269,6 +271,7 @@ function ElixirNeotestAdapter.build_spec(args)
         local results = {}
         for _, line in ipairs(lines) do
           local decoded_result = vim.json.decode(line, { luanil = { object = true } })
+          print(decoded_result)
           local earlier_result = results[decoded_result.id]
           if earlier_result == nil or earlier_result.status ~= "failed" then
             results[decoded_result.id] = {
