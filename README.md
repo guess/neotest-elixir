@@ -11,7 +11,7 @@ use({
   "nvim-neotest/neotest",
   requires = {
     ...,
-    "jfpedroza/neotest-elixir",
+    "guess/neotest-elixir",
   }
   config = function()
     require("neotest").setup({
@@ -60,6 +60,9 @@ require("neotest").setup({
       -- Can be a function to return a dynamic value.
       -- Default: 1000
       write_delay = 1000,
+      -- Optional: Override the plugin path
+      -- Default: Automatically detected
+      plugin_path = '/opts/nvim/plugins'
     }),
   }
 })
