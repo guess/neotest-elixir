@@ -336,6 +336,10 @@ end
 
 setmetatable(ElixirNeotestAdapter, {
   __call = function(_, opts)
+    if opts.plugin_path then
+      core.plugin_path = Path:new(opts.plugin_path)
+    end
+
     if opts.post_process_command and type(opts.post_process_command) == "function" then
       post_process_command = opts.post_process_command
     end

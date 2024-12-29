@@ -3,15 +3,17 @@ local Path = require("plenary.path")
 
 local M = {}
 
+M.plugin_path = nil
+
 function M.mix_root(file_path)
   local root = lib.files.match_root_pattern("mix.exs")(file_path)
 
   -- If the path found is inside an umbrella, return the root of the umbrella
-  if root ~= nil and root:match("/apps/[%w_]+$") then
-    local new_root = lib.files.match_root_pattern("mix.exs")(root:gsub("/apps/[%w_]+$", ""))
+  -- if root ~= nil and root:match("/apps/[%w_]+$") then
+  --   local new_root = lib.files.match_root_pattern("mix.exs")(root:gsub("/apps/[%w_]+$", ""))
 
-    return new_root or root
-  end
+  --   return new_root or root
+  -- end
 
   return root
 end
@@ -99,7 +101,9 @@ local function script_path()
   return str:match("(.*/)")
 end
 
-M.plugin_path = Path.new(script_path()):parent():parent()
+if not M.plugin_path then
+  M.plugin_path = Path:new(script_path()):parent():parent()
+end
 
 -- TODO: dirty version -- make it public only for testing
 M.json_encoder_path = (M.plugin_path / "neotest_elixir/json_encoder.ex").filename
