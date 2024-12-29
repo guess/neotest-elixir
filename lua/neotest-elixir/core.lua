@@ -101,9 +101,8 @@ local function script_path()
   return str:match("(.*/)")
 end
 
-if not M.plugin_path then
-  M.plugin_path = Path:new(script_path()):parent():parent()
-end
+-- M.plugin_path = Path:new(script_path()):parent():parent()
+M.plugin_path = Path:new("/opt/nvim/lazy/")
 
 -- TODO: dirty version -- make it public only for testing
 M.json_encoder_path = (M.plugin_path / "neotest_elixir/json_encoder.ex").filename
