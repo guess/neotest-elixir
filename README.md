@@ -62,7 +62,7 @@ require("neotest").setup({
       write_delay = 1000,
       -- Optional: Override the plugin path
       -- Default: Automatically detected
-      plugin_path = '/opt/nvim/lazy/neotest-elixir'
+      plugin_path = '/opt/nvim/lazy/neotest-elixir/'
     }),
   }
 })
