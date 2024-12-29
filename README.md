@@ -60,9 +60,6 @@ require("neotest").setup({
       -- Can be a function to return a dynamic value.
       -- Default: 1000
       write_delay = 1000,
-      -- Optional: Override the plugin path
-      -- Default: Automatically detected
-      plugin_path = '/opt/nvim/lazy/neotest-elixir/'
     }),
   }
 })
